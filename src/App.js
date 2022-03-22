@@ -5,8 +5,8 @@ function App() {
   return (
     <div className="App">
       VAT CALCULATOR
-      <PriceEntryField label="Price excl VAT: " />
-      <PriceEntryField label="Price incl VAT: " />
+      <PriceEntryField label="Price excl VAT: " price={20} />
+      <PriceEntryField label="Price incl VAT: " price={24} />
     </div>
   );
 }
