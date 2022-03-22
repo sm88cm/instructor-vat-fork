@@ -7,14 +7,29 @@ import VatRateField from './VatRateField';
 function App() {
   const [netPrice, setNetPrice] = useState(0.0);
   const [grossPrice, setGrossPrice] = useState(0.0);
+
+  const handleNetPriceChange = (price) => {
+    const gross_price = price * ((20 / 100) + 1);
+    setNetPrice(price);
+    setGrossPrice(gross_price);
+    // calc vat to pay and set state
+  };
+
+  const handleGrossPriceChange = (price) => {
+    const net_price = price / ((20 / 100) + 1);
+    setNetPrice(net_price);
+    setGrossPrice(price);
+    // calc vat to pay and set state
+  };
+
   return (
     <div className='header field'>
       VAT CALCULATOR
       <div className='pale-green-border'>
         <VatRateField customstyle="field" />
-        <PriceEntryField customstyle="field" label="Price excl VAT: " price={netPrice === 0.0 ? "" : netPrice} />
+        <PriceEntryField customstyle="field" label="Price excl VAT: " priceChanged={handleNetPriceChange} price={netPrice === 0.0 ? "" : netPrice} />
         <DisplayBlock customstyle="field" label="VAT to pay: " value="4" />
-        <PriceEntryField customstyle="field" label="Price incl VAT: " price={grossPrice === 0.0 ? "" : grossPrice} />
+        <PriceEntryField customstyle="field" label="Price incl VAT: " priceChanged={handleGrossPriceChange} price={grossPrice === 0.0 ? "" : grossPrice} />
       </div>
     </div>
   );
