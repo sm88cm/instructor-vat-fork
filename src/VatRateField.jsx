@@ -1,9 +1,9 @@
 import React from 'react';
 
-const VatRateField = () => {
+const VatRateField = (props) => {
     return (
-        <div>
-            VAT Rate:
+        <div className={props.customstyle}>
+            VAT Rate: &nbsp;
             <select>
                 <option value="20">20%</option>
                 <option value="15">15%</option>

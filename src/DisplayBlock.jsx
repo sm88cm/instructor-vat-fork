@@ -2,7 +2,7 @@ import React from 'react';
 
 const DisplayBlock = (props) => {
   return (
-    <div>
+    <div className={props.customstyle}>
       {props.label} {props.value}
     </div>
   );
